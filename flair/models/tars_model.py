@@ -267,7 +267,7 @@ class FewshotClassifier(flair.nn.Classifier[Sentence]):
         sentences: Union[List[Sentence], Sentence],
         candidate_label_set: Union[List[str], Set[str], str],
         multi_label: bool = True,
-        multi_label_threshold = 0.5
+        label_threshold = 0.5
     ):
         """
         Method to make zero shot predictions from the TARS model
@@ -304,7 +304,7 @@ class FewshotClassifier(flair.nn.Classifier[Sentence]):
 
         try:
             # make zero shot predictions
-            self.predict(sentences, label_threshold=multi_label_threshold)
+            self.predict(sentences, label_threshold=label_threshold)
         finally:
             # switch to the pre-existing task
             self.switch_to_task(existing_current_task)
